@@ -24,6 +24,7 @@ class UrlBuilderTest extends PHPUnit_Framework_TestCase {
         $hash = 'hash';
         $urlBuilder->setHash($hash);
         $this->assertEquals($hash, $urlBuilder->getHash());
+        $this->assertEquals('/?r=site%2Findex&id=2%23hash', $urlBuilder->getUrl());
     }
 
     public function testRequiredParams() {

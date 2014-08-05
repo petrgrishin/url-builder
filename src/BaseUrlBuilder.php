@@ -81,6 +81,9 @@ abstract class BaseUrlBuilder {
      * @throws Exception\UrlBuilderException
      */
     public function getHash() {
+        if (!array_key_exists(self::PARAMETER_NAME_HASH, $this->params)) {
+            return null;
+        }
         return $this->getParam(self::PARAMETER_NAME_HASH);
     }
 

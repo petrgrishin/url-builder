@@ -43,16 +43,21 @@ class SimpleUrlBuilder extends BaseUrlBuilder {
     }
 
     protected function createUrl() {
-        return sprintf('%s?%s',
+        return sprintf('%s?%s%s',
             $this->getBaseUrl(),
-            $this->getParamsToString()
+            $this->getParamsToString(),
+            urlencode($this->getHash() ? '#' . $this->getHash() : null)
         );
     }
 
     protected function getParamsToString() {
+        $params = $this->getParams();
+        if (array_key_exists(self::PARAMETER_NAME_HASH, $params)) {
+            unset($params[self::PARAMETER_NAME_HASH]);
+        }
         return http_build_query(array_merge(array(
             $this->getRouteParameterName() => $this->getRoute(),
-        ), $this->getParams()));
+        ), $params));
     }
 }
  
