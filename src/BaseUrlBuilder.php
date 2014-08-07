@@ -49,7 +49,7 @@ abstract class BaseUrlBuilder {
      * @param array $params
      * @return $this
      */
-    public function setParams($params) {
+    public function setParams(array $params) {
         $this->params = $params;
         return $this;
     }
@@ -107,7 +107,7 @@ abstract class BaseUrlBuilder {
      * @param array $required
      * @return $this
      */
-    public function setRequired($required) {
+    public function setRequired(array $required) {
         $this->required = $required;
         return $this;
     }
