@@ -11,31 +11,12 @@ use PetrGrishin\Url\Exception\UrlBuilderException;
 abstract class BaseUrlBuilder {
     const PARAMETER_NAME_HASH = '#';
 
-    /** @var string */
-    private $route;
-    /** @var array */
     private $params = array();
     /** @var array */
     private $required = array();
 
     public static function className() {
         return get_called_class();
-    }
-
-    /**
-     * @return string
-     */
-    public function getRoute() {
-        return $this->route;
-    }
-
-    /**
-     * @param string $route
-     * @return $this
-     */
-    public function setRoute($route) {
-        $this->route = $route;
-        return $this;
     }
 
     /**
@@ -126,13 +107,7 @@ abstract class BaseUrlBuilder {
     /**
      * @return array
      */
-    public function toArray() {
-        return array(
-            'route' => $this->route,
-            'params' => $this->params,
-            'required' => $this->required,
-        );
-    }
+    abstract public function toArray();
 
     /**
      * @return BaseUrlBuilder
