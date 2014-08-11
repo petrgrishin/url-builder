@@ -7,7 +7,7 @@
     },
     "require-dev": {
         "league/phpunit-coverage-listener": "~1.0",
-        "phpunit/phpunit": "3.7.37"
+        "phpunit/phpunit": "~3.7"
     },
     "repositories": [
         {
