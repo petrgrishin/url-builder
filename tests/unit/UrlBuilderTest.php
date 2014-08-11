@@ -7,6 +7,9 @@ use PetrGrishin\Url\SimpleUrlBuilder;
 
 class UrlBuilderTest extends PHPUnit_Framework_TestCase {
 
+    /**
+     * @throws PetrGrishin\Url\Exception\UrlBuilderException
+     */
     public function testCreateUrlBuilder() {
         $route = 'site/index';
         $params = array('id' => 1);

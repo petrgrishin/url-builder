@@ -7,6 +7,9 @@ namespace PetrGrishin\Url;
 
 
 class SimpleUrlBuilder extends BaseUrlBuilder {
+
+    /** @var string */
+    private $route;
     private $routeParameterName = 'r';
     private $baseUrl = '/';
 
@@ -26,6 +29,21 @@ class SimpleUrlBuilder extends BaseUrlBuilder {
         return $this;
     }
 
+    /**
+     * @param string $route
+     * @return $this
+     */
+    public function setRoute($route) {
+        $this->route = $route;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRoute() {
+        return $this->route;
+    }
     /**
      * @return string
      */
@@ -47,6 +65,17 @@ class SimpleUrlBuilder extends BaseUrlBuilder {
             $this->getBaseUrl(),
             $this->getParamsToString(),
             urlencode($this->getHash() ? '#' . $this->getHash() : null)
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray() {
+        return array(
+            'route' => $this->route,
+            'params' => $this->getParams(),
+            'required' => $this->getRequired(),
         );
     }
 
